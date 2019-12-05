@@ -33,3 +33,41 @@ colorPersonalizado.addEventListener('change',
 
   })
 );
+
+//Elementos DOM
+
+
+// function generarGrillaColores() {
+  // var $paleta = $("#paleta");
+  // var $grillaPixeles = $("#grilla-pixeles");
+  var paleta = document.getElementById('paleta');
+  var grillaPixeles = document.getElementById('grilla-pixeles');
+
+  for (i=0; i<nombreColores.length ; i++){
+    
+    var divColores = document.createElement("div");
+    divColores.className = "color-paleta";
+    divColores.style.backgroundColor = nombreColores[i];
+    paleta.appendChild(divColores);
+    //$($paleta).append('<div></div>').attr("class", "color-paleta").css('background-color', nombreColores[i]);
+  }
+// }
+// $(document).ready(generarGrillaColores());
+  for (i=0; i<1751 ; i++){
+    var divGrilla = document.createElement("div");
+    grillaPixeles.appendChild(divGrilla);
+  }
+
+
+
+
+
+
+  var colores = document.getElementsByClassName("color-paleta");
+  var indicador = document.getElementById("indicador-de-color");
+  
+  function cambiarIndicador(e){
+    indicador.style.backgroundColor = e.target.backgroundColor;
+  }
+
+  colores.addEventListener("click", cambiarIndicador);
