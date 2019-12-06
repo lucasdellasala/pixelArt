@@ -52,6 +52,7 @@ for (i=0; i<nombreColores.length ; i++){
 var grillaPixeles = document.getElementById('grilla-pixeles');
 for (i=0; i<1751 ; i++){
   var divGrilla = document.createElement("div");
+  divGrilla.className = "div-coloreable";
   grillaPixeles.appendChild(divGrilla);
 }
 
@@ -59,10 +60,23 @@ for (i=0; i<1751 ; i++){
 var colores = document.getElementsByClassName("color-paleta");
 var indicador = document.getElementById("indicador-de-color");
 
+function cambiarIndicador(e){
+  indicador.style.backgroundColor = e.target.style.backgroundColor;
+}  
+
 for (i=0; i<colores.length ; i++) {
-  function cambiarIndicador(e){
-    indicador.style.backgroundColor = e.target.style.backgroundColor;
-  }  
   colores[i].addEventListener("click", cambiarIndicador);
 }
 
+//Pintar grilla de pixeles
+var divColoreable = document.getElementsByClassName("div-coloreable");
+
+function cambiarColor (e){
+  e.target.style.backgroundColor = indicador.style.backgroundColor;
+}
+
+for (i=0; i<divColoreable.length ; i++) {
+  divColoreable[i].addEventListener("click", cambiarColor);
+}
+
+//
