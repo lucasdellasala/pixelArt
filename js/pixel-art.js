@@ -79,4 +79,13 @@ for (i=0; i<divColoreable.length ; i++) {
   divColoreable[i].addEventListener("click", cambiarColor);
 }
 
-//
+//Rueda de color
+colorPersonalizado.addEventListener('change',
+ (function() {
+   // Se guarda el color de la rueda en colorActual
+    colorActual = colorPersonalizado.value;
+   // Completar para que cambie el indicador-de-color al colorActual
+   indicador.style.backgroundColor =colorActual;
+  })
+);
+
