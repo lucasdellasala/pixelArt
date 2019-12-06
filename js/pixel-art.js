@@ -89,3 +89,11 @@ colorPersonalizado.addEventListener('change',
   })
 );
 
+//Mouse apretado o no
+
+var mouseApretado = false;
+
+grillaPixeles.addEventListener("mousedown", () => {mouseApretado=true; console.log(mouseApretado)});
+grillaPixeles.addEventListener("mouseup", () => {mouseApretado=false});
+
+
