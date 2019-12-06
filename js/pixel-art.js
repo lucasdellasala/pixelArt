@@ -37,37 +37,32 @@ colorPersonalizado.addEventListener('change',
 //Elementos DOM
 
 
-// function generarGrillaColores() {
-  // var $paleta = $("#paleta");
-  // var $grillaPixeles = $("#grilla-pixeles");
-  var paleta = document.getElementById('paleta');
-  var grillaPixeles = document.getElementById('grilla-pixeles');
+//Generando paleta de colores
+var paleta = document.getElementById('paleta');
 
-  for (i=0; i<nombreColores.length ; i++){
-    
-    var divColores = document.createElement("div");
-    divColores.className = "color-paleta";
-    divColores.style.backgroundColor = nombreColores[i];
-    paleta.appendChild(divColores);
-    //$($paleta).append('<div></div>').attr("class", "color-paleta").css('background-color', nombreColores[i]);
-  }
-// }
-// $(document).ready(generarGrillaColores());
-  for (i=0; i<1751 ; i++){
-    var divGrilla = document.createElement("div");
-    grillaPixeles.appendChild(divGrilla);
-  }
-
-
-
-
-
-
-  var colores = document.getElementsByClassName("color-paleta");
-  var indicador = document.getElementById("indicador-de-color");
+for (i=0; i<nombreColores.length ; i++){
   
-  function cambiarIndicador(e){
-    indicador.style.backgroundColor = e.target.backgroundColor;
-  }
+  var divColores = document.createElement("div");
+  divColores.className = "color-paleta";
+  divColores.style.backgroundColor = nombreColores[i];
+  paleta.appendChild(divColores);
+}
 
-  colores.addEventListener("click", cambiarIndicador);
+//Generando grilla de pixeles
+var grillaPixeles = document.getElementById('grilla-pixeles');
+for (i=0; i<1751 ; i++){
+  var divGrilla = document.createElement("div");
+  grillaPixeles.appendChild(divGrilla);
+}
+
+//Cambio de indicador de color seleccionado con click
+var colores = document.getElementsByClassName("color-paleta");
+var indicador = document.getElementById("indicador-de-color");
+
+for (i=0; i<colores.length ; i++) {
+  function cambiarIndicador(e){
+    indicador.style.backgroundColor = e.target.style.backgroundColor;
+  }  
+  colores[i].addEventListener("click", cambiarIndicador);
+}
+
