@@ -52,6 +52,15 @@ $(document).ready(function () {
       .css("background-color", nombreColores[i])
       .appendTo($paleta);
     }
+    
+  //Generando grilla de pixeles
+  var $grillaPixeles = $('#grilla-pixeles');
+  
+  for (i=0; i<1751 ; i++){
+    $('<div></div>')
+      .attr("class", "div-coloreable")
+      .appendTo($grillaPixeles);
+  }
 })
 
 // //Generando paleta de colores
