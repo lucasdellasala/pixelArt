@@ -40,64 +40,76 @@ colorPersonalizado.addEventListener('change',
 
 //Elementos DOM
 
+$(document).ready(function () {
 
-//Generando paleta de colores
-var paleta = document.getElementById('paleta');
-
-for (i=0; i<nombreColores.length ; i++){
+  //Generando paleta de colores
+  var $paleta = $('#paleta');
   
-  var divColores = document.createElement("div");
-  divColores.className = "color-paleta";
-  divColores.style.backgroundColor = nombreColores[i];
-  paleta.appendChild(divColores);
-}
 
-//Generando grilla de pixeles
-var grillaPixeles = document.getElementById('grilla-pixeles');
-for (i=0; i<1751 ; i++){
-  var divGrilla = document.createElement("div");
-  divGrilla.className = "div-coloreable";
-  grillaPixeles.appendChild(divGrilla);
-}
+  for (i=0; i<nombreColores.length ; i++){
+    $("<div></div>")
+      .attr("class", "color-paleta")
+      .css("background-color", nombreColores[i])
+      .appendTo($paleta);
+    }
+})
 
-//Cambio de indicador de color seleccionado con click
-var colores = document.getElementsByClassName("color-paleta");
-var indicador = document.getElementById("indicador-de-color");
+// //Generando paleta de colores
+// var paleta = document.getElementById('paleta');
 
-function cambiarIndicador(e){
-  indicador.style.backgroundColor = e.target.style.backgroundColor;
-}  
+// for (i=0; i<nombreColores.length ; i++){
+  
+//   var divColores = document.createElement("div");
+//   divColores.className = "color-paleta";
+//   divColores.style.backgroundColor = nombreColores[i];
+//   paleta.appendChild(divColores);
+// }
+// //Generando grilla de pixeles
+// var grillaPixeles = document.getElementById('grilla-pixeles');
+// for (i=0; i<1751 ; i++){
+//   var divGrilla = document.createElement("div");
+//   divGrilla.className = "div-coloreable";
+//   grillaPixeles.appendChild(divGrilla);
+// }
 
-for (i=0; i<colores.length ; i++) {
-  colores[i].addEventListener("click", cambiarIndicador);
-}
+// //Cambio de indicador de color seleccionado con click
+// var colores = document.getElementsByClassName("color-paleta");
+// var indicador = document.getElementById("indicador-de-color");
 
-//Pintar grilla de pixeles
-var divColoreable = document.getElementsByClassName("div-coloreable");
+// function cambiarIndicador(e){
+//   indicador.style.backgroundColor = e.target.style.backgroundColor;
+// }  
 
-function cambiarColor (e){
-  e.target.style.backgroundColor = indicador.style.backgroundColor;
-}
+// for (i=0; i<colores.length ; i++) {
+//   colores[i].addEventListener("click", cambiarIndicador);
+// }
 
-for (i=0; i<divColoreable.length ; i++) {
-  divColoreable[i].addEventListener("click", cambiarColor);
-}
+// //Pintar grilla de pixeles
+// var divColoreable = document.getElementsByClassName("div-coloreable");
 
-//Rueda de color
-colorPersonalizado.addEventListener('change',
- (function() {
-   // Se guarda el color de la rueda en colorActual
-    colorActual = colorPersonalizado.value;
-   // Completar para que cambie el indicador-de-color al colorActual
-   indicador.style.backgroundColor =colorActual;
-  })
-);
+// function cambiarColor (e){
+//   e.target.style.backgroundColor = indicador.style.backgroundColor;
+// }
 
-//Mouse apretado o no
+// for (i=0; i<divColoreable.length ; i++) {
+//   divColoreable[i].addEventListener("click", cambiarColor);
+// }
 
-var mouseApretado = false;
+// //Rueda de color
+// colorPersonalizado.addEventListener('change',
+//  (function() {
+//    // Se guarda el color de la rueda en colorActual
+//     colorActual = colorPersonalizado.value;
+//    // Completar para que cambie el indicador-de-color al colorActual
+//    indicador.style.backgroundColor =colorActual;
+//   })
+// );
 
-grillaPixeles.addEventListener("mousedown", () => {mouseApretado=true; console.log(mouseApretado)});
-grillaPixeles.addEventListener("mouseup", () => {mouseApretado=false});
+// //Mouse apretado o no
+
+// var mouseApretado = false;
+
+// grillaPixeles.addEventListener("mousedown", () => {mouseApretado=true; console.log(mouseApretado)});
+// grillaPixeles.addEventListener("mouseup", () => {mouseApretado=false});
 
 
