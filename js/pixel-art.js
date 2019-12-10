@@ -60,6 +60,7 @@ $(document).ready(function () {
   for (i=0; i<1751 ; i++){
     $('<div></div>')
       .attr("class", "div-coloreable")
+      .click(cambiarColor)
       .appendTo($grillaPixeles);
   }
 
@@ -67,20 +68,17 @@ $(document).ready(function () {
   var $indicador = $("#indicador-de-color");
 
   function cambiarIndicador(e){
-        $indicador.css('background-color', $(e.target).css('background-color'));
+    $indicador.css('background-color', $(e.target).css('background-color'));
   }  
 
 
-// //Pintar grilla de pixeles
-// var divColoreable = document.getElementsByClassName("div-coloreable");
+  //Pintar grilla de pixeles
+  var divColoreable = document.getElementsByClassName("div-coloreable");
 
-// function cambiarColor (e){
-//   e.target.style.backgroundColor = indicador.style.backgroundColor;
-// }
+  function cambiarColor (e){
+    $(e.target).css('background-color', $indicador.css('background-color'));
+  }
 
-// for (i=0; i<divColoreable.length ; i++) {
-//   divColoreable[i].addEventListener("click", cambiarColor);
-// }
 
 // //Rueda de color
 // colorPersonalizado.addEventListener('change',
