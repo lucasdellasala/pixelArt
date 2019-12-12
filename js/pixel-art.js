@@ -24,19 +24,7 @@ var paleta = document.getElementById('paleta');
 var grillaPixeles = document.getElementById('grilla-pixeles');
 
 
-// Variable para guardar el elemento 'color-personalizado'
-// Es decir, el que se elige con la rueda de color.
-var colorPersonalizado = document.getElementById('color-personalizado');
 
-colorPersonalizado.addEventListener('change', 
-  (function() {
-    // Se guarda el color de la rueda en colorActual
-    colorActual = colorPersonalizado.value;
-    // Completar para que cambie el indicador-de-color al colorActual
-
-
-  })
-);
 
 //Elementos DOM
 
@@ -73,81 +61,17 @@ $(document).ready(function () {
 
 
   //Pintar grilla de pixeles
-  var divColoreable = document.getElementsByClassName("div-coloreable");
-
   function cambiarColor (e){
     $(e.target).css('background-color', $indicador.css('background-color'));
   }
 
+  // Variable para guardar el elemento 'color-personalizado'
+  var $colorPersonalizado = $('#color-personalizado');
 
-// //Rueda de color
-// colorPersonalizado.addEventListener('change',
-//  (function() {
-//    // Se guarda el color de la rueda en colorActual
-//     colorActual = colorPersonalizado.value;
-//    // Completar para que cambie el indicador-de-color al colorActual
-//    indicador.style.backgroundColor =colorActual;
-//   })
-// );
-
-// //Mouse apretado o no
-
-// var mouseApretado = false;
-
-// grillaPixeles.addEventListener("mousedown", () => {mouseApretado=true; console.log(mouseApretado)});
-// grillaPixeles.addEventListener("mouseup", () => {mouseApretado=false});
-})
-
-// //Generando paleta de colores
-// var paleta = document.getElementById('paleta');
-
-// for (i=0; i<nombreColores.length ; i++){
-  
-//   var divColores = document.createElement("div");
-//   divColores.className = "color-paleta";
-//   divColores.style.backgroundColor = nombreColores[i];
-//   paleta.appendChild(divColores);
-// }
-// //Generando grilla de pixeles
-// var grillaPixeles = document.getElementById('grilla-pixeles');
-// for (i=0; i<1751 ; i++){
-//   var divGrilla = document.createElement("div");
-//   divGrilla.className = "div-coloreable";
-//   grillaPixeles.appendChild(divGrilla);
-// }
-
-// //Cambio de indicador de color seleccionado con click
-// var colores = document.getElementsByClassName("color-paleta");
-// var indicador = document.getElementById("indicador-de-color");
-
-// function cambiarIndicador(e){
-//   indicador.style.backgroundColor = e.target.style.backgroundColor;
-// }  
-
-// for (i=0; i<colores.length ; i++) {
-//   colores[i].addEventListener("click", cambiarIndicador);
-// }
-
-// //Pintar grilla de pixeles
-// var divColoreable = document.getElementsByClassName("div-coloreable");
-
-// function cambiarColor (e){
-//   e.target.style.backgroundColor = indicador.style.backgroundColor;
-// }
-
-// for (i=0; i<divColoreable.length ; i++) {
-//   divColoreable[i].addEventListener("click", cambiarColor);
-// }
-
-// //Rueda de color
-// colorPersonalizado.addEventListener('change',
-//  (function() {
-//    // Se guarda el color de la rueda en colorActual
-//     colorActual = colorPersonalizado.value;
-//    // Completar para que cambie el indicador-de-color al colorActual
-//    indicador.style.backgroundColor =colorActual;
-//   })
-// );
+  // Es decir, el que se elige con la rueda de color.
+  $colorPersonalizado.change(function() {
+    $indicador.css("background-color", $colorPersonalizado.css("background-color"));
+  });
 
 // //Mouse apretado o no
 
@@ -156,4 +80,4 @@ $(document).ready(function () {
 // grillaPixeles.addEventListener("mousedown", () => {mouseApretado=true; console.log(mouseApretado)});
 // grillaPixeles.addEventListener("mouseup", () => {mouseApretado=false});
 
-
+});
