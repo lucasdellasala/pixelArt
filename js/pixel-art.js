@@ -23,9 +23,6 @@ var nombreColores = ['White', 'LightYellow',
 var paleta = document.getElementById('paleta');
 var grillaPixeles = document.getElementById('grilla-pixeles');
 
-
-
-
 //Elementos DOM
 
 $(document).ready(function () {
@@ -68,11 +65,20 @@ $(document).ready(function () {
   // Variable para guardar el elemento 'color-personalizado'
   var $colorPersonalizado = $('#color-personalizado');
 
-  // Es decir, el que se elige con la rueda de color.
-  $colorPersonalizado.change(function() {
-    $indicador.css("background-color", $colorPersonalizado.css("background-color"));
-  });
+  // // Es decir, el que se elige con la rueda de color.
+  // $colorPersonalizado.change(function() {
+  //   colorActual = $colorPersonalizado.css("background-color");
+  //   $indicador.css("background-color", colorActual);
+  // });
 
+  $colorPersonalizado.addEventListener('change',
+    (function() {
+      // Se guarda el color de la rueda en colorActual
+      colorActual = $colorPersonalizado.value;
+      // Completar para que cambie el indicador-de-color al colorActual
+      $indicador.style.backgroundColor = colorActual;
+    })
+  );
 // //Mouse apretado o no
 
 // var mouseApretado = false;
