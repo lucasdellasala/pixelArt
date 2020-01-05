@@ -88,7 +88,18 @@ function pintar(e){
 
 $('#borrar').click(function () {
   $('.div-coloreable').each(function(){
-    console.log('El evento funciona, la función no');
     $(this).animate({'background-color': 'white'},750);
   })
 });
+
+//Cargar superhéroe
+
+$(".imgs li").children().attr("class", "superheroes");
+
+
+$(".superheroes").click(function(event){
+  var superheroeSeleccionado = $(event.target).attr("id");
+  console.log(superheroeSeleccionado);
+  alert(superheroeSeleccionado);
+  cargarSuperheroe(superheroeSeleccionado);
+}); 
