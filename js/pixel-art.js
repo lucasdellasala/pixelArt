@@ -73,7 +73,7 @@ $(document).ready(function () {
 
 var mouseApretado = false;
 
-$('body').mousedown(function (){mouseApretado=true; console.log(mouseApretado)});
+$('body').mousedown(function (){mouseApretado=true});
 $('body').mouseup(function (){mouseApretado=false});
 
 //Pintar de corrido
@@ -84,3 +84,11 @@ function pintar(e){
   }
 }
 
+//Borrar todo
+
+$('#borrar').click(function () {
+  $('.div-coloreable').each(function(){
+    console.log('El evento funciona, la función no');
+    $(this).animate({'background-color': 'white'},750);
+  })
+});
