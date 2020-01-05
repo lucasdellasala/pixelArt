@@ -103,3 +103,7 @@ $(".superheroes").click(function(event){
   alert(superheroeSeleccionado);
   cargarSuperheroe(superheroeSeleccionado);
 }); 
+
+//Guardar dibujo
+
+$('#guardar').click(guardarPixelArt);
