@@ -98,10 +98,25 @@ $(".imgs li").children().attr("class", "superheroes");
 
 
 $(".superheroes").click(function(event){
-  var superheroeSeleccionado = $(event.target).attr("id");
-  console.log(typeof(superheroeSeleccionado));
-  cargarSuperheroe(superheroeSeleccionado);
+  dibujarSuperheroe($(event.target).attr("id"));
 }); 
+
+function dibujarSuperheroe (superheroe) {
+  switch(superheroe) {
+    case "batman":
+      cargarSuperheroe(batman);
+      break;
+    case "wonder":
+      cargarSuperheroe(wonder);
+      break;
+    case "flash":
+      cargarSuperheroe(flash);
+      break;
+    case "invisible":
+      cargarSuperheroe(invisible);
+      break;
+  }
+}
 
 //Guardar dibujo
 
