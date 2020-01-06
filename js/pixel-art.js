@@ -20,84 +20,104 @@ var nombreColores = ['White', 'LightYellow',
   'DimGray', 'LightSlateGray', 'DarkSlateGray', 'Black'
 ];
 
-var paleta = document.getElementById('paleta');
-var grillaPixeles = document.getElementById('grilla-pixeles');
-
-
-// Variable para guardar el elemento 'color-personalizado'
-// Es decir, el que se elige con la rueda de color.
-var colorPersonalizado = document.getElementById('color-personalizado');
-
-colorPersonalizado.addEventListener('change', 
-  (function() {
-    // Se guarda el color de la rueda en colorActual
-    colorActual = colorPersonalizado.value;
-    // Completar para que cambie el indicador-de-color al colorActual
-
-
-  })
-);
+var $colorPersonalizado = $('#color-personalizado');
 
 //Elementos DOM
+  //Generando grilla de pixeles
+  var $grillaPixeles = $('#grilla-pixeles');
+  //Cambio de indicador de color seleccionado con click
+  var $indicador = $("#indicador-de-color");
+  // Variable para guardar el elemento 'color-personalizado'
 
+$(document).ready(function () {   
 
-//Generando paleta de colores
-var paleta = document.getElementById('paleta');
-
-for (i=0; i<nombreColores.length ; i++){
+  //Generando paleta de colores
+  var $paleta = $('#paleta');
   
-  var divColores = document.createElement("div");
-  divColores.className = "color-paleta";
-  divColores.style.backgroundColor = nombreColores[i];
-  paleta.appendChild(divColores);
-}
+  for (i=0; i<nombreColores.length ; i++){
+    $("<div></div>")
+      .attr("class", "color-paleta")
+      .css("background-color", nombreColores[i])
+      .click(cambiarIndicador)
+      .appendTo($paleta);
+    }
+  
+  for (i=0; i<1751 ; i++){
+    $('<div></div>')
+      .attr("class", "div-coloreable")
+      .click(cambiarColor)
+      .appendTo($grillaPixeles)
+      .mouseover(pintar);
+  }
 
-//Generando grilla de pixeles
-var grillaPixeles = document.getElementById('grilla-pixeles');
-for (i=0; i<1751 ; i++){
-  var divGrilla = document.createElement("div");
-  divGrilla.className = "div-coloreable";
-  grillaPixeles.appendChild(divGrilla);
-}
+});
 
-//Cambio de indicador de color seleccionado con click
-var colores = document.getElementsByClassName("color-paleta");
-var indicador = document.getElementById("indicador-de-color");
 
-function cambiarIndicador(e){
-  indicador.style.backgroundColor = e.target.style.backgroundColor;
-}  
+  function cambiarIndicador(e){
+    $indicador.css('background-color', $(e.target).css('background-color'));
+  }  
 
-for (i=0; i<colores.length ; i++) {
-  colores[i].addEventListener("click", cambiarIndicador);
-}
+  //Pintar grilla de pixeles
+  function cambiarColor (e){
+    $(e.target).css('background-color', $indicador.css('background-color'));
+  }
 
-//Pintar grilla de pixeles
-var divColoreable = document.getElementsByClassName("div-coloreable");
 
-function cambiarColor (e){
-  e.target.style.backgroundColor = indicador.style.backgroundColor;
-}
 
-for (i=0; i<divColoreable.length ; i++) {
-  divColoreable[i].addEventListener("click", cambiarColor);
-}
-
-//Rueda de color
-colorPersonalizado.addEventListener('change',
- (function() {
-   // Se guarda el color de la rueda en colorActual
-    colorActual = colorPersonalizado.value;
-   // Completar para que cambie el indicador-de-color al colorActual
-   indicador.style.backgroundColor =colorActual;
-  })
-);
+  // Es decir, el que se elige con la rueda de color.
+    $colorPersonalizado.change(function() {
+      $indicador.css("background-color", $colorPersonalizado.val());
+    });
 
 //Mouse apretado o no
 
 var mouseApretado = false;
 
-grillaPixeles.addEventListener("mousedown", () => {mouseApretado=true; console.log(mouseApretado)});
-grillaPixeles.addEventListener("mouseup", () => {mouseApretado=false});
+$('body').mousedown(function (){mouseApretado=true});
+$('body').mouseup(function (){mouseApretado=false});
+
+//Pintar de corrido
+
+function pintar(e){
+  if (mouseApretado===true) {
+    cambiarColor(e);
+  }
+}
+
+//Borrar todo
+
+$('#borrar').click(function () {
+  $('.div-coloreable').each(function(){
+    $(this).animate({'background-color': 'white'},750);
+  })
+});
+
+//Cargar superhéroe
+
+$(".imgs li").children().attr("class", "superheroes");
 
 
+$(".superheroes").click(function(event){
+  dibujarSuperheroe($(event.target).attr("id"));
+}); 
+
+function dibujarSuperheroe (superheroe) {
+  switch(superheroe) {
+    case "batman":
+      cargarSuperheroe(batman);
+      break;
+    case "wonder":
+      cargarSuperheroe(wonder);
+      break;
+    case "flash":
+      cargarSuperheroe(flash);
+      break;
+    case "invisible":
+      cargarSuperheroe(invisible);
+      break;
+  }
+}
+
+//Guardar dibujo
+
+$('#guardar').click(guardarPixelArt);
