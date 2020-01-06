@@ -99,8 +99,7 @@ $(".imgs li").children().attr("class", "superheroes");
 
 $(".superheroes").click(function(event){
   var superheroeSeleccionado = $(event.target).attr("id");
-  console.log(superheroeSeleccionado);
-  alert(superheroeSeleccionado);
+  console.log(typeof(superheroeSeleccionado));
   cargarSuperheroe(superheroeSeleccionado);
 }); 
 
